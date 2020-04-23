@@ -24,35 +24,47 @@ config = {
 let game = new Phaser.Game(config);
 var button;
 var wingdings;
+var wongdongs;
 var platforms;
+var elevator;
+var elevator2;
+var floors;
 var SPEED = 125;
 var key_A;
 var key_D;
 var key_W;
 var key_Space;
 var cam;
+var cam2;
 var doors;
 var walls;
 var doorup1;
 var doordown1;
 var doorup2;
 var doordown2;
+var doorup3;
+var doordown3;
 var enemy;
 var mechhitbox;
 var mech1;
 var laser_drone_right1;
 var laser_drone_left1;
+var laser_drone_right2;
 var cursors;
 var laser1;
 var laser2;
 var laser;
+var cam2;
 var wingdingshp = 5;
+var wingdingsup = 0;
 var txt;
 var txt2;
+var txt3;
 var invincible = 0;
+var godownk = 0;
 function lasershoot() {
   this.time.delayedCall(8000, lasershoot, [], this);
-  if (wingdings.x > 315.0 && wingdings.x < 600.0) {
+  if (cam.x == 450 && cam.y > 210) {
   var laser_drone_right1angle = Phaser.Math.Angle.BetweenPoints (laser_drone_right1, wingdings);
   laser1 = this.physics.add.sprite(laser_drone_right1.x, laser_drone_right1.y - 2, 'laser', 0);
   laser1.rotation = laser_drone_right1angle;
@@ -67,7 +79,7 @@ function lasershoot() {
 }};
 function lasershoot2() {
   this.time.delayedCall(8000, lasershoot2, [], this);
-  if (wingdings.x > 315.0 && wingdings.x < 600.0) {
+  if (cam.x == 450 && cam.y > 210) {
   var laser_drone_left1angle = Phaser.Math.Angle.BetweenPoints (laser_drone_left1, wingdings);
   laser2 = laser.create(laser_drone_left1.x, laser_drone_left1.y - 2, 'laser', 0);
   laser2.rotation = laser_drone_left1angle;
@@ -114,4 +126,10 @@ function cammove1() {
 }
 function cammove2() {
   cam.x -= 10
+}
+function cam2move1() {
+  cam2.x += 10
+}
+function cam2move2() {
+  cam2.x -= 10
 }
